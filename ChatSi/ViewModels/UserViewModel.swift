@@ -19,7 +19,7 @@ class UserViewModel: ObservableObject {
         
         FirebaseManager.shared.firestore.collection("users").document(uid).getDocument { snapshot, error in
             if let error = error {
-                print("Failed to fetch user: ", error)
+                print("Failed to fetch User:", error)
                 return
             }
             

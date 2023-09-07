@@ -10,24 +10,23 @@ import SwiftUI
 struct ChatListView: View {
     @StateObject var route = Route()
     
+    
     var body: some View {
         NavigationStack(path: $route.path){
-            VStack {
-                
-            }
-            .task {
-                if FirebaseManager.shared.auth.currentUser == nil {
-                    route.path.append("login")
+            VStack{
+                Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+                Button("logout"){
+                    FirebaseManager.shared.logoutUser()
                 }
             }
+            
         }
         
+        .navigationBarBackButtonHidden(true)
         .navigationDestination(for: String.self){item in
             switch (item){
-            case "login":
-                LoginView()
-            case "register":
-                RegisterView()
+            case "details":
+                ChatView()
             default:
                 ContentView()
             }

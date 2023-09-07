@@ -8,8 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var isLoggedIn = FirebaseManager.shared.auth.currentUser != nil
     var body: some View {
-        ChatListView()
+        Group {
+            if isLoggedIn {
+                ChatListView()
+            } else {
+                LoginView(isLoggedIn: $isLoggedIn)
+            }
+        }
     }
 }
 
