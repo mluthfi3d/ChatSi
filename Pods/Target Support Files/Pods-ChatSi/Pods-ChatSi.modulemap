@@ -1,0 +1,6 @@
+framework module Pods_ChatSi {
+  umbrella header "Pods-ChatSi-umbrella.h"
+
+  export *
+  module * { export * }
+}
