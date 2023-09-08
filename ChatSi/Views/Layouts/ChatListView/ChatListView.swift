@@ -9,11 +9,12 @@ import SwiftUI
 
 struct ChatListView: View {
     @StateObject var route = Route()
+    @StateObject var userViewModel = UserViewModel()
     
     @Binding var isLoggedIn: Bool
     @State var isNewChat: Bool = false
     
-    @StateObject var userViewModel = UserViewModel()
+    @State var selectedUser: UserModel?
     
     var body: some View {
         NavigationStack(path: $route.path){
@@ -22,33 +23,20 @@ struct ChatListView: View {
             }
             .navigationTitle("Chat")
             .navigationBarTitleDisplayMode(.inline)
-            .navigationBarTitleDisplayMode(.large)
             .toolbar{
                 ToolbarItem(placement: .primaryAction){
                     Menu(content: {
                         Button(action: {
-    //                        isNewTask.toggle()
                             isNewChat = true
                         }) {
                             Label("New Message", systemImage: "plus.message")
                         }
                         Button(action: {
-    //                        isNewCategory.toggle()
                             FirebaseManager.shared.logoutUser()
                             isLoggedIn.toggle()
                         }) {
                             Label("Logout", systemImage: "rectangle.portrait.and.arrow.right")
                         }
-    //                    Button(action: {
-    ////                        isFiltering.toggle()
-    //                    }) {
-    //                        Label("Filter", systemImage: "slider.horizontal.3")
-    //                    }
-    //                    Button(action: {
-    //                        //                            isNewCategory.toggle()
-    //                    }) {
-    //                        Label("Archived", systemImage: "archivebox")
-    //                    }
                     }, label: {
                         Image(systemName: "ellipsis")
                             .imageScale(.large)
@@ -57,14 +45,19 @@ struct ChatListView: View {
             }
             
             .sheet(isPresented: $isNewChat){
-                NewChat(userViewModel: userViewModel)
+                NewChat(userViewModel: userViewModel, didSelectUser: {user in
+                    self.selectedUser = user
+                    route.path.append("details")
+                })
             }
             
             .navigationBarBackButtonHidden(true)
             .navigationDestination(for: String.self){item in
                 switch (item){
                 case "details":
-                    ConversationView()
+                    if selectedUser != nil {
+                        ConversationView(userToChat: selectedUser!)
+                    }
                 default:
                     ContentView()
                 }
@@ -72,6 +65,7 @@ struct ChatListView: View {
             }
             
         }
+        .environmentObject(route)
     }
 }
 

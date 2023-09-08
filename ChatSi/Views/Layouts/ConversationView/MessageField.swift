@@ -12,13 +12,26 @@ struct MessageField: View {
     var body: some View {
         VStack{
             HStack{
-                TextField("", text: $message, axis: .vertical)
+                TextField("Write message here", text: $message, axis: .vertical)
+                    .font(.system(size: 14))
                     .lineLimit(...4)
-                    .textFieldStyle(.roundedBorder)
+                    .padding([.horizontal], 16)
+                    .padding([.vertical], 8)
+                    .cornerRadius(16)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color.gray, lineWidth: 0.5)
+                    )
                     .padding([.trailing], 8)
-                Image(systemName: "paperplane.circle.fill")
-                    .foregroundColor(Color.blue)
-                    .imageScale(.large)
+                    
+                Button {
+                    
+                } label: {
+                    Text("Send")
+                        .font(.system(size: 14))
+                        .fontWeight(.medium)
+                }
+                .buttonStyle(.borderedProminent)
             }
         }
         .padding([.horizontal], 16)

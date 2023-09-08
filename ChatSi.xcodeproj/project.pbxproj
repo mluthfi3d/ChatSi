@@ -27,6 +27,7 @@
 		27CC00492AAA734700FF38A3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27CC00482AAA734700FF38A3 /* GoogleService-Info.plist */; };
 		27CC004D2AAAB21500FF38A3 /* NewChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CC004C2AAAB21500FF38A3 /* NewChat.swift */; };
 		27CC004F2AAAD0E000FF38A3 /* UserViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CC004E2AAAD0E000FF38A3 /* UserViewItem.swift */; };
+		27CC00512AAB055000FF38A3 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CC00502AAB055000FF38A3 /* MessageViewModel.swift */; };
 		F849BEE1F25EA7ACEC88840D /* Pods_ChatSi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E16EA0DA34C9402ED954FED /* Pods_ChatSi.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		27CC00482AAA734700FF38A3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		27CC004C2AAAB21500FF38A3 /* NewChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChat.swift; sourceTree = "<group>"; };
 		27CC004E2AAAD0E000FF38A3 /* UserViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewItem.swift; sourceTree = "<group>"; };
+		27CC00502AAB055000FF38A3 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		953271B968AA07A037C84EFC /* Pods-ChatSi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatSi.debug.xcconfig"; path = "Target Support Files/Pods-ChatSi/Pods-ChatSi.debug.xcconfig"; sourceTree = "<group>"; };
 		E058DD56CB78EF56A9FF4EE3 /* Pods-ChatSi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatSi.release.xcconfig"; path = "Target Support Files/Pods-ChatSi/Pods-ChatSi.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -124,6 +126,7 @@
 			children = (
 				27CC003C2AAA611300FF38A3 /* FirebaseManager.swift */,
 				27CC00402AAA6CD300FF38A3 /* UserViewModel.swift */,
+				27CC00502AAB055000FF38A3 /* MessageViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				27CC00292AAA555800FF38A3 /* MessageModel.swift in Sources */,
 				27CC00272AAA551600FF38A3 /* MessageField.swift in Sources */,
 				27CC00222AAA545B00FF38A3 /* CoversationView.swift in Sources */,
+				27CC00512AAB055000FF38A3 /* MessageViewModel.swift in Sources */,
 				27CC001E2AAA541C00FF38A3 /* Colors.swift in Sources */,
 				27CC00362AAA60EB00FF38A3 /* LoginView.swift in Sources */,
 				27CC00382AAA60F200FF38A3 /* RegisterView.swift in Sources */,

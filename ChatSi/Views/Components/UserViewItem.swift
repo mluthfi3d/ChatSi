@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct UserViewItem: View {
-    var user: UserModel = UserModel(uid: "id", name: "name", username: "username", email: "Email")
+    var user: UserModel = UserModel(uid: "id", name: "Name So Long", username: "username", email: "Email")
     var body: some View {
         VStack{
             HStack(alignment: .center){
@@ -20,18 +20,14 @@ struct UserViewItem: View {
                 .foregroundColor(Color.white)
                 .cornerRadius(18)
                 VStack(alignment: .leading){
-                    HStack{
-                        VStack{
-                            Text(user.name)
-                                .font(.system(size: 18))
-                                .fontWeight(.medium)
-                            Text("@" + user.username)
-                                .font(.system(size: 14))
-                                .fontWeight(.medium)
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    }
+                    Text(user.name)
+                        .font(.system(size: 18))
+                        .fontWeight(.medium)
+                    Text(user.username)
+                        .font(.system(size: 14))
+                        .fontWeight(.medium)
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
         }
         .padding([.horizontal], 16)

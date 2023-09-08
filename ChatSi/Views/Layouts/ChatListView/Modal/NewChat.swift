@@ -8,15 +8,23 @@
 import SwiftUI
 
 struct NewChat: View {
+    
     @Environment(\.dismiss) var dismiss
     @ObservedObject var userViewModel: UserViewModel
+    
+    let didSelectUser: (UserModel) -> ()
     
     @State var searchText = ""
     var body: some View {
         NavigationStack{
             VStack(spacing: 16){
                 ForEach(userViewModel.users) { foundedUser in
-                    UserViewItem(user: foundedUser)
+                    Button {
+                        dismiss()
+                        didSelectUser(foundedUser)
+                    } label :{
+                        UserViewItem(user: foundedUser)
+                    }.buttonStyle(.plain)
                 }
                 Spacer()
             }
