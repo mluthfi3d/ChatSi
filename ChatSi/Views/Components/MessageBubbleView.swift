@@ -8,14 +8,17 @@
 import SwiftUI
 
 struct MessageBubbleView: View {
+    
+    var user: UserModel
+    var message: MessageModel
     var isFirstPerson = false
-    var name = "Name"
+    
     var body: some View {
         VStack{
             HStack(alignment: .top){
                 if !isFirstPerson {
                     VStack {
-                        Text(name.first!.description)
+                        Text(user.name.first!.description)
                     }
                     .frame(width: 36, height: 36)
                     .background(Color.blue)
@@ -23,9 +26,9 @@ struct MessageBubbleView: View {
                     .cornerRadius(18)
                 }
                 VStack(alignment: isFirstPerson ? .trailing : .leading, spacing: 4){
-                    Text(name)
+                    Text(user.name)
                     VStack{
-                        Text("Hello, World! This is how it displayed if has many text. Like this one, it will be like this")
+                        Text(message.message)
                             .multilineTextAlignment(.leading)
                     }
                     .padding([.horizontal], 16)
@@ -36,7 +39,7 @@ struct MessageBubbleView: View {
                 }
                 if isFirstPerson {
                     VStack {
-                        Text(name.first!.description)
+                        Text(user.name.first!.description)
                     }
                     .frame(width: 36, height: 36)
                     .background(Color.brown)
@@ -51,11 +54,11 @@ struct MessageBubbleView: View {
     }
 }
 
-struct MessageBubbleView_Previews: PreviewProvider {
-    static var previews: some View {
-        VStack (spacing: 8){
-            MessageBubbleView(isFirstPerson: false, name: "Luthfi")
-            MessageBubbleView(isFirstPerson: true, name: "Nina")
-        }
-    }
-}
+//struct MessageBubbleView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        VStack (spacing: 8){
+//            MessageBubbleView(isFirstPerson: false, name: "Luthfi")
+//            MessageBubbleView(isFirstPerson: true, name: "Nina")
+//        }
+//    }
+//}

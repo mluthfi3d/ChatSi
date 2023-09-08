@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ChatListView: View {
     @StateObject var route = Route()
-    @StateObject var userViewModel = UserViewModel()
+    @ObservedObject var userViewModel = UserViewModel()
+    @ObservedObject var messageViewModel = MessageViewModel(receiver: nil, userViewModel: nil)
     
     @Binding var isLoggedIn: Bool
     @State var isNewChat: Bool = false
@@ -19,7 +20,29 @@ struct ChatListView: View {
     var body: some View {
         NavigationStack(path: $route.path){
             VStack{
-                Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+                ScrollView {
+                    ScrollViewReader { proxy in
+                        VStack(spacing: 8){
+                            ForEach(messageViewModel.allRecentChats.reversed(), id: \.id) { recentChat in
+                                ChatListViewItem(user: recentChat.user,
+                                                 message: recentChat.message,
+                                                 selectedUser: $selectedUser,
+                                                 route: route, messageViewModel: messageViewModel)
+                            }
+                            HStack{
+                                Spacer()
+                            }
+                            .frame(height: 8)
+                            .id("empty")
+                        }
+                        .task (id: messageViewModel.allRecentChats.count){
+                            withAnimation(.spring()){
+                                proxy.scrollTo("empty", anchor: .bottom)
+                            }
+                        }
+                    }
+                }
+                .frame(maxHeight: .infinity)
             }
             .navigationTitle("Chat")
             .navigationBarTitleDisplayMode(.inline)
@@ -56,7 +79,7 @@ struct ChatListView: View {
                 switch (item){
                 case "details":
                     if selectedUser != nil {
-                        ConversationView(userToChat: selectedUser!)
+                        ConversationView(userToChat: selectedUser!, messageViewModel: MessageViewModel(receiver: selectedUser!, userViewModel: userViewModel))
                     }
                 default:
                     ContentView()

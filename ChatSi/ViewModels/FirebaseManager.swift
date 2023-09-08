@@ -25,6 +25,8 @@ class FirebaseManager: NSObject {
         super.init()
     }
     
+    
+    // USER TO FIRESTORE MANAGER
     func loginUser(email: String, password: String, completion: @escaping (_ success: Bool, _ error: Error?) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) {result, error in
             if let error = error {
@@ -49,8 +51,11 @@ class FirebaseManager: NSObject {
             
             print("Success create User:", result!)
             guard let uid = self.auth.currentUser?.uid else { return }
-            let userData = ["uid": uid, "name": name, "username": username, "email": self.auth.currentUser?.email ?? ""]
-            self.storeData(userData: userData)
+            let userData = ["uid": uid,
+                            "name": name,
+                            "username": username,
+                            "email": self.auth.currentUser?.email ?? ""]
+            self.storeUserData(userData: userData)
             completion(true, nil)
         }
     }
@@ -60,16 +65,85 @@ class FirebaseManager: NSObject {
         try? auth.signOut()
     }
     
-    func storeData(userData: Dictionary<String, Any>) {
+    func storeUserData(userData: Dictionary<String, Any>) {
         guard let uid = auth.currentUser?.uid else { return }
         
         firestore.collection("users").document(uid).setData(userData) { error in
             if let error = error {
-                print("Failed to Send Data:", error)
+                print("Failed to Send User Data:", error)
                 return
             }
         }
-
+        
+    }
+    
+    
+    
+    // MESSAGE TO FIRESTORE
+    func sendMessages(receiverUid: String, message: String, completion: @escaping (_ success: Bool, _ error: Error?) -> Void) {
+        
+        guard let uid = auth.currentUser?.uid else { return }
+        
+        let date = Date.now
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy H:mm"
+        
+        let messageData = ["receiverUid": receiverUid,
+                           "senderUid": uid,
+                           "message": message,
+                           "timestamp": dateFormatter.string(from: date)]
+        
+        let senderRecentDocument = firestore.collection("messages")
+            .document(uid)
+            .collection("recent_messages")
+            .document(receiverUid)
+        
+        let senderDocument = firestore.collection("messages")
+            .document(uid)
+            .collection(receiverUid)
+            .document()
+        
+        let receiverRecentDocument = firestore.collection("messages")
+            .document(receiverUid)
+            .collection("recent_messages")
+            .document(uid)
+        
+        let receiverDocument = firestore.collection("messages")
+            .document(receiverUid)
+            .collection(uid)
+            .document()
+        
+        
+        senderRecentDocument.setData(messageData) { error in
+            if let error = error {
+                print("Failed to Send Messages Data:", error)
+                return
+            }
+        }
+        
+        senderDocument.setData(messageData) { error in
+            if let error = error {
+                print("Failed to Send Messages Data:", error)
+                return
+            }
+        }
+        
+        receiverDocument.setData(messageData) { error in
+            if let error = error {
+                print("Failed to Send Messages Data:", error)
+                return
+            }
+        }
+        
+        
+        receiverRecentDocument.setData(messageData) { error in
+            if let error = error {
+                print("Failed to Send Messages Data:", error)
+                return
+            }
+            
+            completion(true, nil)
+        }
     }
     
     

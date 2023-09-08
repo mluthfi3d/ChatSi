@@ -45,11 +45,8 @@ struct LoginView: View {
                         FirebaseManager.shared.loginUser(email: email, password: password) { success, error in
                             if success {
                                 withAnimation(.spring()){
-                                    print("aaa")
                                     isLoggedIn = true
                                 }
-                            } else {
-                                print("bbbb")
                             }
                         }
                     } label: {

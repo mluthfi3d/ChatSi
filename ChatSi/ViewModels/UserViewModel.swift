@@ -8,6 +8,9 @@
 import Foundation
 
 class UserViewModel: ObservableObject {
+    
+    static let shared = UserViewModel()
+    
     @Published var currentUser: UserModel?
     @Published var users: [UserModel] = []
     
@@ -17,14 +20,16 @@ class UserViewModel: ObservableObject {
     
     func fetchCurrentUser(){
         guard let uid = FirebaseManager.shared.auth.currentUser?.uid else { return }
-        
         FirebaseManager.shared.firestore.collection("users").document(uid).getDocument { snapshot, error in
             if let error = error {
                 print("Failed to fetch User:", error)
                 return
             }
             
-            guard let data = snapshot?.data() else { return }
+            guard let data = snapshot?.data() else {
+                return
+                
+            }
             
             let uid = data["uid"] as? String ?? ""
             let name = data["name"] as? String ?? ""
@@ -32,6 +37,7 @@ class UserViewModel: ObservableObject {
             let email = data["email"] as? String ?? ""
             
             self.currentUser = UserModel(uid: uid, name: name, username: username, email: email)
+
         }
     }
     
@@ -62,4 +68,34 @@ class UserViewModel: ObservableObject {
                 }
         }
     }
+    
+    
+    func fetchUserByUid(uid: String, completion: @escaping (_ success: Bool, _ user: UserModel?) -> Void) {
+        FirebaseManager.shared.firestore.collection("users")
+            .whereField("uid", isEqualTo: uid).limit(to: 1)
+            .getDocuments { snapshot, error in
+                
+                if let error = error {
+                    print("Failed to fetch user data:", error)
+                }
+                
+                if Int(snapshot?.count ?? 0) > 0 {
+                    guard let data = snapshot?.documents[0].data() else { return }
+                    
+                    let uid = data["uid"] as? String ?? ""
+                        
+                    let name = data["name"] as? String ?? ""
+                    let username = data["username"] as? String ?? ""
+                    let email = data["email"] as? String ?? ""
+                    
+                    let user = UserModel(uid: uid, name: name, username: username, email: email)
+                    completion(true, user)
+                        
+                }
+        }
+        
+        completion(false, nil)
+    }
+    
+    
 }

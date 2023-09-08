@@ -7,8 +7,10 @@
 
 import Foundation
 
-struct MessageModel {
-    var uid: String
+struct MessageModel: Identifiable {
+    let id = UUID()
+    var receiverUid: String
+    var senderUid: String
     var message: String
-    var date: String
+    var timestamp: String
 }

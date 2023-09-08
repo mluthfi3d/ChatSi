@@ -15,5 +15,4 @@ struct UserModel: Identifiable{
     var name: String
     var username: String
     var email: String
-    var chats: [MessageModel]?
 }
