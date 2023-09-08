@@ -13,7 +13,7 @@
 		27CC000D2AA9D35900FF38A3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27CC000C2AA9D35900FF38A3 /* Preview Assets.xcassets */; };
 		27CC001E2AAA541C00FF38A3 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CC001D2AAA541C00FF38A3 /* Colors.swift */; };
 		27CC00202AAA542B00FF38A3 /* ChatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CC001F2AAA542B00FF38A3 /* ChatListView.swift */; };
-		27CC00222AAA545B00FF38A3 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CC00212AAA545B00FF38A3 /* ChatView.swift */; };
+		27CC00222AAA545B00FF38A3 /* CoversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CC00212AAA545B00FF38A3 /* CoversationView.swift */; };
 		27CC00242AAA54F500FF38A3 /* MessageBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CC00232AAA54F500FF38A3 /* MessageBubbleView.swift */; };
 		27CC00272AAA551600FF38A3 /* MessageField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CC00262AAA551600FF38A3 /* MessageField.swift */; };
 		27CC00292AAA555800FF38A3 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CC00282AAA555800FF38A3 /* MessageModel.swift */; };
@@ -25,6 +25,8 @@
 		27CC003F2AAA6B3800FF38A3 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CC003E2AAA6B3800FF38A3 /* Route.swift */; };
 		27CC00412AAA6CD300FF38A3 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CC00402AAA6CD300FF38A3 /* UserViewModel.swift */; };
 		27CC00492AAA734700FF38A3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27CC00482AAA734700FF38A3 /* GoogleService-Info.plist */; };
+		27CC004D2AAAB21500FF38A3 /* NewChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CC004C2AAAB21500FF38A3 /* NewChat.swift */; };
+		27CC004F2AAAD0E000FF38A3 /* UserViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CC004E2AAAD0E000FF38A3 /* UserViewItem.swift */; };
 		F849BEE1F25EA7ACEC88840D /* Pods_ChatSi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E16EA0DA34C9402ED954FED /* Pods_ChatSi.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,7 +39,7 @@
 		27CC000C2AA9D35900FF38A3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		27CC001D2AAA541C00FF38A3 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		27CC001F2AAA542B00FF38A3 /* ChatListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListView.swift; sourceTree = "<group>"; };
-		27CC00212AAA545B00FF38A3 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		27CC00212AAA545B00FF38A3 /* CoversationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoversationView.swift; sourceTree = "<group>"; };
 		27CC00232AAA54F500FF38A3 /* MessageBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubbleView.swift; sourceTree = "<group>"; };
 		27CC00262AAA551600FF38A3 /* MessageField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageField.swift; sourceTree = "<group>"; };
 		27CC00282AAA555800FF38A3 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
@@ -49,6 +51,8 @@
 		27CC003E2AAA6B3800FF38A3 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		27CC00402AAA6CD300FF38A3 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		27CC00482AAA734700FF38A3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		27CC004C2AAAB21500FF38A3 /* NewChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChat.swift; sourceTree = "<group>"; };
+		27CC004E2AAAD0E000FF38A3 /* UserViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewItem.swift; sourceTree = "<group>"; };
 		953271B968AA07A037C84EFC /* Pods-ChatSi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatSi.debug.xcconfig"; path = "Target Support Files/Pods-ChatSi/Pods-ChatSi.debug.xcconfig"; sourceTree = "<group>"; };
 		E058DD56CB78EF56A9FF4EE3 /* Pods-ChatSi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatSi.release.xcconfig"; path = "Target Support Files/Pods-ChatSi/Pods-ChatSi.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,9 +131,9 @@
 		27CC001A2AAA516500FF38A3 /* Layouts */ = {
 			isa = PBXGroup;
 			children = (
+				27CC004A2AAAB18F00FF38A3 /* ChatListView */,
 				27CC00392AAA60F500FF38A3 /* Authentication */,
-				27CC00252AAA550200FF38A3 /* ChatView */,
-				27CC001F2AAA542B00FF38A3 /* ChatListView.swift */,
+				27CC00252AAA550200FF38A3 /* ConversationView */,
 			);
 			path = Layouts;
 			sourceTree = "<group>";
@@ -139,6 +143,7 @@
 			children = (
 				27CC00232AAA54F500FF38A3 /* MessageBubbleView.swift */,
 				27CC00322AAA5C1F00FF38A3 /* ChatListViewItem.swift */,
+				27CC004E2AAAD0E000FF38A3 /* UserViewItem.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -152,13 +157,13 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		27CC00252AAA550200FF38A3 /* ChatView */ = {
+		27CC00252AAA550200FF38A3 /* ConversationView */ = {
 			isa = PBXGroup;
 			children = (
-				27CC00212AAA545B00FF38A3 /* ChatView.swift */,
+				27CC00212AAA545B00FF38A3 /* CoversationView.swift */,
 				27CC00262AAA551600FF38A3 /* MessageField.swift */,
 			);
-			path = ChatView;
+			path = ConversationView;
 			sourceTree = "<group>";
 		};
 		27CC00392AAA60F500FF38A3 /* Authentication */ = {
@@ -184,6 +189,23 @@
 				27CC00482AAA734700FF38A3 /* GoogleService-Info.plist */,
 			);
 			path = FirebaseInfo;
+			sourceTree = "<group>";
+		};
+		27CC004A2AAAB18F00FF38A3 /* ChatListView */ = {
+			isa = PBXGroup;
+			children = (
+				27CC004B2AAAB1B800FF38A3 /* Modal */,
+				27CC001F2AAA542B00FF38A3 /* ChatListView.swift */,
+			);
+			path = ChatListView;
+			sourceTree = "<group>";
+		};
+		27CC004B2AAAB1B800FF38A3 /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				27CC004C2AAAB21500FF38A3 /* NewChat.swift */,
+			);
+			path = Modal;
 			sourceTree = "<group>";
 		};
 		27CCFFF92AA9D35800FF38A3 = {
@@ -330,19 +352,21 @@
 			files = (
 				27CC003D2AAA611300FF38A3 /* FirebaseManager.swift in Sources */,
 				27CC00202AAA542B00FF38A3 /* ChatListView.swift in Sources */,
+				27CC004D2AAAB21500FF38A3 /* NewChat.swift in Sources */,
 				27CC00332AAA5C1F00FF38A3 /* ChatListViewItem.swift in Sources */,
 				27CC00082AA9D35800FF38A3 /* ContentView.swift in Sources */,
 				27CC00242AAA54F500FF38A3 /* MessageBubbleView.swift in Sources */,
 				27CC003F2AAA6B3800FF38A3 /* Route.swift in Sources */,
 				27CC00292AAA555800FF38A3 /* MessageModel.swift in Sources */,
 				27CC00272AAA551600FF38A3 /* MessageField.swift in Sources */,
-				27CC00222AAA545B00FF38A3 /* ChatView.swift in Sources */,
+				27CC00222AAA545B00FF38A3 /* CoversationView.swift in Sources */,
 				27CC001E2AAA541C00FF38A3 /* Colors.swift in Sources */,
 				27CC00362AAA60EB00FF38A3 /* LoginView.swift in Sources */,
 				27CC00382AAA60F200FF38A3 /* RegisterView.swift in Sources */,
 				27CC002B2AAA555F00FF38A3 /* UserModel.swift in Sources */,
 				27CC00412AAA6CD300FF38A3 /* UserViewModel.swift in Sources */,
 				27CC00062AA9D35800FF38A3 /* ChatSiApp.swift in Sources */,
+				27CC004F2AAAD0E000FF38A3 /* UserViewItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

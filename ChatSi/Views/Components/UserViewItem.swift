@@ -1,5 +1,5 @@
 //
-//  ChatListViewItem.swift
+//  UserViewItem.swift
 //  ChatSi
 //
 //  Created by Muhammad Luthfi on 08/09/23.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct ChatListViewItem: View {
-    var user: UserModel = UserModel(uid: "uid", name: "name", username: "username", email: "email")
+struct UserViewItem: View {
+    var user: UserModel = UserModel(uid: "id", name: "name", username: "username", email: "Email")
     var body: some View {
         VStack{
             HStack(alignment: .center){
@@ -25,14 +25,12 @@ struct ChatListViewItem: View {
                             Text(user.name)
                                 .font(.system(size: 18))
                                 .fontWeight(.medium)
+                            Text("@" + user.username)
+                                .font(.system(size: 14))
+                                .fontWeight(.medium)
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        Text("04:20")
-                            .font(.system(size: 14))
                     }
-                    Text("This is how it looks if it has many text inside, that is why I tried it out to make sure we know")
-                        .lineLimit(2)
-                        .truncationMode(.tail)
                 }
             }
         }
@@ -42,8 +40,8 @@ struct ChatListViewItem: View {
     }
 }
 
-struct ChatListViewItem_Previews: PreviewProvider {
+struct UserViewItem_Previews: PreviewProvider {
     static var previews: some View {
-        ChatListViewItem()
+        UserViewItem()
     }
 }

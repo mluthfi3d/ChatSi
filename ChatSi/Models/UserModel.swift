@@ -7,8 +7,12 @@
 
 import Foundation
 
-struct UserModel{
+struct UserModel: Identifiable{
+    
+    var id: String { uid }
+    
     var uid: String
+    var name: String
     var username: String
     var email: String
     var chats: [MessageModel]?

@@ -39,7 +39,7 @@ class FirebaseManager: NSObject {
         }
     }
     
-    func registerUser(username: String, email: String, password: String, completion: @escaping (_ success: Bool, _ error: Error?) -> Void){
+    func registerUser(username: String, name: String, email: String, password: String, completion: @escaping (_ success: Bool, _ error: Error?) -> Void){
         Auth.auth().createUser(withEmail: email, password: password){ result, error in
             if let error = error {
                 print("Failed to create User:", error)
@@ -48,9 +48,10 @@ class FirebaseManager: NSObject {
             }
             
             print("Success create User:", result!)
-            self.storeData(username: username)
+            guard let uid = self.auth.currentUser?.uid else { return }
+            let userData = ["uid": uid, "name": name, "username": username, "email": self.auth.currentUser?.email ?? ""]
+            self.storeData(userData: userData)
             completion(true, nil)
-            
         }
     }
     
@@ -59,10 +60,8 @@ class FirebaseManager: NSObject {
         try? auth.signOut()
     }
     
-    func storeData(username: String) {
+    func storeData(userData: Dictionary<String, Any>) {
         guard let uid = auth.currentUser?.uid else { return }
-        let userData = ["uid": uid, "username": username, "email": auth.currentUser?.email ?? ""]
-        
         
         firestore.collection("users").document(uid).setData(userData) { error in
             if let error = error {

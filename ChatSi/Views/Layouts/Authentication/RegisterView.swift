@@ -9,9 +9,11 @@ import SwiftUI
 
 struct RegisterView: View {
     @State var username = ""
+    @State var name = ""
     @State var email = ""
     @State var password = ""
     @Binding var isLoggedIn: Bool
+    @Environment(\.presentationMode) var presentation
     var body: some View {
         NavigationStack{
             VStack(spacing: 16){
@@ -22,6 +24,15 @@ struct RegisterView: View {
                 }
                 VStack {
                     TextField("Username", text: $username)
+                        .textInputAutocapitalization(.never)
+                        .padding(16)
+                        .cornerRadius(8)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color.gray, lineWidth: 0.5)
+                        )
+                    
+                    TextField("Name", text: $name)
                         .textInputAutocapitalization(.never)
                         .padding(16)
                         .cornerRadius(8)
@@ -52,7 +63,7 @@ struct RegisterView: View {
                 
                 VStack (spacing: 8){
                     Button {
-                        FirebaseManager.shared.registerUser(username: username, email: email, password: password) { success, error in
+                        FirebaseManager.shared.registerUser(username: username, name: name, email: email, password: password) { success, error in
                             if success {
                                 withAnimation(.spring()){
                                     isLoggedIn.toggle()
@@ -66,10 +77,11 @@ struct RegisterView: View {
                     }
                     .buttonStyle(.borderedProminent)
                     
-                    NavigationLink(destination: LoginView(isLoggedIn: $isLoggedIn).navigationBarBackButtonHidden(true),
-                                   label: {
+                    Button {
+                        self.presentation.wrappedValue.dismiss()
+                    } label: {
                         Text("Already have account?")
-                    })
+                    }
                 }
             }
             .padding([.horizontal], 16)

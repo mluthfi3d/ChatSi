@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ChatView: View {
+struct ConversationView: View {
     var body: some View {
         VStack{
             Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
@@ -15,8 +15,8 @@ struct ChatView: View {
     }
 }
 
-struct ChatView_Previews: PreviewProvider {
+struct ConversationView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatView()
+        ConversationView()
     }
 }
