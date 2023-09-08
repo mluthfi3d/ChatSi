@@ -20,29 +20,33 @@ struct ChatListView: View {
     var body: some View {
         NavigationStack(path: $route.path){
             VStack{
-                ScrollView {
-                    ScrollViewReader { proxy in
-                        VStack(spacing: 8){
-                            ForEach(messageViewModel.allRecentChats.reversed(), id: \.id) { recentChat in
-                                ChatListViewItem(user: recentChat.user,
-                                                 message: recentChat.message,
-                                                 selectedUser: $selectedUser,
-                                                 route: route, messageViewModel: messageViewModel)
+                if (!messageViewModel.allRecentChats.isEmpty) {
+                    ScrollView {
+                        ScrollViewReader { proxy in
+                            VStack(spacing: 8){
+                                ForEach(messageViewModel.allRecentChats.reversed(), id: \.id) { recentChat in
+                                    ChatListViewItem(user: recentChat.user,
+                                                     message: recentChat.message,
+                                                     selectedUser: $selectedUser,
+                                                     route: route, messageViewModel: messageViewModel)
+                                }
+                                HStack{
+                                    Spacer()
+                                }
+                                .frame(height: 8)
+                                .id("empty")
                             }
-                            HStack{
-                                Spacer()
-                            }
-                            .frame(height: 8)
-                            .id("empty")
-                        }
-                        .task (id: messageViewModel.allRecentChats.count){
-                            withAnimation(.spring()){
-                                proxy.scrollTo("empty", anchor: .bottom)
+                            .task (id: messageViewModel.allRecentChats.count){
+                                withAnimation(.spring()){
+                                    proxy.scrollTo("empty", anchor: .bottom)
+                                }
                             }
                         }
                     }
+                    .frame(maxHeight: .infinity)
+                } else {
+                    Text("No Chat History, try to Start a New One!")
                 }
-                .frame(maxHeight: .infinity)
             }
             .navigationTitle("Chat")
             .navigationBarTitleDisplayMode(.inline)
